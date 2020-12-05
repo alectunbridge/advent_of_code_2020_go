@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestSplitFront(t *testing.T) {
+func TestSplit(t *testing.T) {
 	tables := []struct {
 		min int
 		max int
@@ -17,6 +17,10 @@ func TestSplitFront(t *testing.T) {
 		{40,47,"B",44,47},
 		{44,47,"F",44,45},
 		{44,45,"F",44,44},
+		
+		{0,7,"R",4,7},
+		{4,7,"L",4,5},
+		{4,5,"R",5,5},
 	}
 
 	for _, table := range tables {

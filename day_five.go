@@ -1,7 +1,7 @@
 package main
 
 func Split(min int, max int, character string) (int, int) {
-	if character == "F" {
+	if character == "F" || character == "L" {
 		return min, min + (max-min)/2 
 	}
 
