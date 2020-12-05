@@ -3,6 +3,7 @@ import (
 	"os"
 	"bufio"
 	"fmt"
+	"sort"
 )
 
 func Split(min int, max int, character string) (int, int) {
@@ -44,12 +45,25 @@ func main(){
 
 	scanner := bufio.NewScanner(file)
 
-	var maxId=0
+	maxId := 0
+	var ids []int
 	for scanner.Scan() {
 		_, _, id := ProcessInputLine(scanner.Text())
 		if id > maxId {
 			maxId = id
 		}
+		ids = append(ids,id)
 	}
-	fmt.Printf("maxId: %d", maxId)
+
+	sort.Ints(ids)
+	previousId :=-1
+	for _,id := range ids {	
+		if id != (previousId + 1) {
+			fmt.Println("non-consequtive id:",id)	
+		} else {
+			fmt.Println("valid id:",id)
+		}
+		previousId = id
+	}
+	fmt.Println("maxId: ", maxId)
 }
